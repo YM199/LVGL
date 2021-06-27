@@ -6,6 +6,7 @@
 #include <pthread.h>
 #include <time.h> 
 #include <sys/time.h>
+#include "gui/gui.h"
 
 #define DISP_HOR_RES 800
 #define DISP_VER_RES 480
@@ -44,7 +45,7 @@ int main(void)
     lv_indev_drv_register(&indev_drv);         /*Finally register the driver*/
 
 
-    lv_example_get_started_1();
+    gui();
     while (1)
     {
         lv_tick_inc(5);
