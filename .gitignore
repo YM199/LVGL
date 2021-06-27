@@ -50,3 +50,9 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+
+#other
+lv_conf.h
+lv_demo_conf.h
+lv_drv_conf.h
