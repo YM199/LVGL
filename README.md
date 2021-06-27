@@ -31,7 +31,7 @@ cp ./lv_demos/lv_demo_conf_template.h lv_demo_conf.h
 
 你的板子的输入事件可能不是event1，根据实际进行修改。可以使用cat命令来测试一下你板子的触摸屏输入对应的是哪一个event，如：
 
-![image-20210612173308112](img/image-20210612173308112.png)
+![](https://github.com/YM199/LVGL/blob/main/image/image-20210612173308112.png?raw=true)
 
 此时，触摸一下屏幕，则终端会有信息（乱码信息）输出，则说明当前板子的触摸输入对应的就是这个event。
 
@@ -58,7 +58,7 @@ cp ./lv_demos/lv_demo_conf_template.h lv_demo_conf.h
 
 目前的github版本有一些bug，比如如下图：
 
-![image-20210627163848018](img/image-20210627163848018.png)
+![](https://github.com/YM199/LVGL/blob/main/image/image-20210627163848018.png?raw=true)
 
 这是属于语法错误了，只需要对着错误改掉就行。
 
