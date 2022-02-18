@@ -20,11 +20,11 @@ WARNINGS = -Wall -Wshadow -Wundef -Wmaybe-uninitialized -Wmissing-prototypes \
 		   -Wunreachable-code -Wno-switch-default -Wswitch-enum -Wreturn-type -Wmultichar -Wno-discarded-qualifiers -Wformat-security \
 		   -Wno-ignored-qualifiers -Wno-sign-compare
 
-		   
+
 OPTIMIZATION ?= -O3 -g0
 
-CFLAGS ?= -I$(LVGL_DIR)/  $(OPTIMIZATION) 
-LDFLAGS ?= -lm 
+CFLAGS ?= -I$(LVGL_DIR)/  $(OPTIMIZATION) -std=c99
+LDFLAGS ?= -lm
 BIN = demo
 
 
@@ -53,9 +53,9 @@ all: default
 %.o: %.c
 	@$(CC)  $(CFLAGS) -c $< -o $@
 	@echo "CC $<"
-    
+
 default: $(AOBJS) $(COBJS) $(MAINOBJ)
 	$(CC) -o $(BIN) $(MAINOBJ) $(AOBJS) $(COBJS) $(LDFLAGS)
 
-clean: 
+clean:
 	rm -f $(BIN) $(AOBJS) $(COBJS) $(MAINOBJ)
