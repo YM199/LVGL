@@ -5,6 +5,3 @@
 	path = lv_drivers
 	url = https://github.com/lvgl/lv_drivers.git
 	ignore = dirty
-[submodule "lv_demos"]
-	path = lv_demos
-	url = https://github.com/lvgl/lv_demos.git
