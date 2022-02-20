@@ -24,6 +24,10 @@ cp ./lv_drivers/lv_drv_conf_template.h lv_drv_conf.h
 将lv_conf.h的`\#define LV_COLOR_DEPTH   32`改为`\#define LV_COLOR_DEPTH   16`
 注意：这里对应自己显示器的硬件配置。比如我的显示器是16的（RGB565）。
 
+```c
+#define LV_USE_PERF_MONITOR 1 /*显示 FPS 和 CPU*/
+```
+
 ### lv_drv_conf.h
 
 ```C
