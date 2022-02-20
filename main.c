@@ -1,27 +1,39 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/time.h>
+#include <time.h>
+#include <unistd.h>
+#include <pthread.h>
+#include <assert.h>
 #include "lvgl/lvgl.h"
 #include "lv_drivers/display/fbdev.h"
 #include "lv_drivers/indev/evdev.h"
-#include <unistd.h>
-#include <pthread.h>
-#include <time.h> 
-#include <sys/time.h>
 #include "gui/gui.h"
 
 #define DISP_HOR_RES 800
 #define DISP_VER_RES 480
- 
 
 #define MY_DISP_HOR_RES 800
 #define MY_DISP_VER_RES 480
 
+pthread_mutex_t mutex;
 
-
+static void *thread_tick_inc( void *arg )
+{
+    while(1)
+    {
+        pthread_mutex_lock(&mutex);
+        lv_tick_inc(5);
+        pthread_mutex_unlock(&mutex);
+        usleep(5000);
+    }
+}
 
 int main(void)
 {
+    int ret;
 
     lv_init();
-
 
     static lv_disp_draw_buf_t draw_buf;
     static lv_color_t buf1[DISP_HOR_RES * DISP_VER_RES / 10];                        /*Declare a buffer for 1/10 screen size*/
@@ -43,13 +55,16 @@ int main(void)
     indev_drv.read_cb = evdev_read;      /*Set your driver function*/
     lv_indev_drv_register(&indev_drv);         /*Finally register the driver*/
 
+    pthread_t tid;
+
+    ret = pthread_create( &tid, NULL, thread_tick_inc, NULL );
 
     gui();
     while (1)
     {
-        lv_tick_inc(5);
+        pthread_mutex_lock(&mutex);
         lv_task_handler();
-        usleep(5000);        
+        pthread_mutex_unlock(&mutex);
     }
 }
 
