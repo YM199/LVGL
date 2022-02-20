@@ -24,7 +24,7 @@ WARNINGS = -Wall -Wshadow -Wundef -Wmaybe-uninitialized -Wmissing-prototypes \
 OPTIMIZATION ?= -O3 -g0
 
 CFLAGS ?= -I$(LVGL_DIR)/  $(OPTIMIZATION)
-CFLAGS += -std=c99 #C99标准
+CFLAGS += -std=gnu99 #GNU99标准
 
 LDFLAGS ?= -lm
 LDFLAGS += -lpthread #链接pthread
@@ -62,3 +62,6 @@ default: $(AOBJS) $(COBJS) $(MAINOBJ)
 
 clean:
 	rm -f $(BIN) $(AOBJS) $(COBJS) $(MAINOBJ)
+
+copy:
+	cp $(BIN) /home/yangmou/linux/nfs/rootfs/yangmou/
