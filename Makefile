@@ -23,9 +23,13 @@ WARNINGS = -Wall -Wshadow -Wundef -Wmaybe-uninitialized -Wmissing-prototypes \
 
 OPTIMIZATION ?= -O3 -g0
 
-CFLAGS ?= -I$(LVGL_DIR)/  $(OPTIMIZATION) -std=c99
+CFLAGS ?= -I$(LVGL_DIR)/  $(OPTIMIZATION)
+CFLAGS += -std=c99 #C99标准
+
 LDFLAGS ?= -lm
-BIN = demo
+LDFLAGS += -lpthread #链接pthread
+
+BIN = demo #目标文件名字
 
 
 #Collect the files to compile
