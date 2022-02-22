@@ -17,9 +17,11 @@ cp lvgl_src/lvgl/lv_conf_template.h lvgl_src/lv_conf.h
 cp lvgl_src/lv_drivers/lv_drv_conf_template.h lvgl_src/lv_drv_conf.h
 ```
 
-将lv_conf.h、lv_drv_conf.h的的 `#if 0` 改为 `#if 1`
-
 ### lv_conf.h
+
+```c
+#if 0 改为 #if 1
+```
 
 将lv_conf.h的`\#define LV_COLOR_DEPTH   32`改为`\#define LV_COLOR_DEPTH   16`
 注意：这里对应自己显示器的硬件配置。比如我的显示器是16的（RGB565）。
@@ -29,6 +31,10 @@ cp lvgl_src/lv_drivers/lv_drv_conf_template.h lvgl_src/lv_drv_conf.h
 ```
 
 ### lv_drv_conf.h
+
+```c
+#if 0 改为 #if 1
+```
 
 添加宏定义：
 
@@ -49,4 +55,32 @@ cp lvgl_src/lv_drivers/lv_drv_conf_template.h lvgl_src/lv_drv_conf.h
 
 此时，触摸一下屏幕，则终端会有信息（乱码信息）输出，则说明当前板子的触摸输入对应的就是这个event。
 
-最终生成的可执行文件为demo。
+## CMake的修改
+
+lvgl_src/lvgl/env_support/cmake/custom.cmake
+
+注释掉如下部分:
+
+```text
+#target_compile_definitions(
+#  lvgl PUBLIC $<$<BOOL:${LV_LVGL_H_INCLUDE_SIMPLE}>:LV_LVGL_H_INCLUDE_SIMPLE>
+#              $<$<BOOL:${LV_CONF_INCLUDE_SIMPLE}>:LV_CONF_INCLUDE_SIMPLE>)
+```
+
+lvgl_src/lvgl/CMakeLists.txt
+
+注释掉如下部分:
+
+```text
+if(NOT ESP_PLATFORM)
+  #project(lvgl HOMEPAGE_URL https://github.com/lvgl/lvgl)
+endif()
+```
+
+lvgl_src/lv_drivers/CMakeLists.txt
+
+注释掉如下部分:
+
+```text
+#project(lv_drivers HOMEPAGE_URL https://github.com/lvgl/lv_drivers/)
+```

@@ -27,6 +27,7 @@ static void *thread_tick_inc( void *arg )
         pthread_mutex_unlock(&mutex);
         usleep(5000);
     }
+    return NULL;
 }
 
 int main(void)

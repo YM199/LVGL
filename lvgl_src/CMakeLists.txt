@@ -7,6 +7,11 @@ set(CMAKE_C_FLAGS_RELEASE "$ENV{CXXFLAGS} -O3 -Wall -std=gnu11") #release版本�
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin) #可执行二进制的输出路径
 set(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/lib) #库的输出路径
 
+#设置LVGL_ROOT_DIR变量,在custom.cmake中用到
+set(LVGL_ROOT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/lvgl)
+#message("LVGL_ROOT_DIR : ${LVGL_ROOT_DIR}")
+
+
 #设置头文件路劲
 include_directories(lvgl/)
 include_directories(lv_drivers/)
@@ -18,9 +23,8 @@ file(GLOB_RECURSE INCLUDES "./*.h" ) #获取lvg_src目录下的全部的头文�
 aux_source_directory(. DIR_SRCS) #将当前目录的全部源文件添加至DIR_SRC
 message("DIR_SRC : ${DIR_SRCS}")
 
-#set(VAR lv_examples_lib)
-set(VAR ${VAR} lvgl_lib)
-set(VAR ${VAR} lv_drivers_lib)
+#set(VAR ${VAR} lvgl)
+set(VAR ${VAR} lvgl_drivers)
 set(VAR ${VAR} gui_lib)
 message("VAR : ${VAR}")
 
