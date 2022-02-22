@@ -1,7 +1,11 @@
 cmake_minimum_required(VERSION 3.16)
-SET(CMAKE_BUILD_TYPE "Debug") #当前是debug版本
-SET(CMAKE_C_FLAGS_DEBUG "$ENV{CXXFLAGS} -O0 -Wall -g2 -ggdb -std=gnu11") #debug版本的编译选项
-SET(CMAKE_C_FLAGS_RELEASE "$ENV{CXXFLAGS} -O3 -Wall -std=gnu11") #release版本的编译选项
+set(CMAKE_BUILD_TYPE "Debug") #当前是debug版本
+set(CMAKE_C_FLAGS_DEBUG "$ENV{CXXFLAGS} -O0 -Wall -g2 -ggdb -std=gnu11") #debug版本的编译选项
+set(CMAKE_C_FLAGS_RELEASE "$ENV{CXXFLAGS} -O3 -Wall -std=gnu11") #release版本的编译选项
+
+#设置文件保存路径
+set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin) #可执行二进制的输出路径
+set(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/lib) #库的输出路径
 
 #设置头文件路劲
 include_directories(lvgl/)
