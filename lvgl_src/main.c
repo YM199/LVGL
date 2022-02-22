@@ -58,7 +58,10 @@ int main(void)
     pthread_t tid;
 
     ret = pthread_create( &tid, NULL, thread_tick_inc, NULL );
-
+    if(ret != 0)
+    {
+        printf("error\n");
+    }
     gui();
     while (1)
     {
@@ -66,6 +69,7 @@ int main(void)
         lv_task_handler();
         pthread_mutex_unlock(&mutex);
     }
+    return 0;
 }
 
 
