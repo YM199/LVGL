@@ -1,1 +1,7 @@
 
+[submodule "lvgl_src/lvgl"]
+	path = lvgl_src/lvgl
+	url = git@github.com:lvgl/lvgl.git
+[submodule "lvgl_src/lv_drivers"]
+	path = lvgl_src/lv_drivers
+	url = git@github.com:lvgl/lv_drivers.git
