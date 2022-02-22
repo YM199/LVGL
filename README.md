@@ -13,8 +13,8 @@ git submodule update --init --recursive
 在工程根目录执行以下语句
 
 ```shell
-cp ./lvgl/lv_conf_template.h ./lv_conf.h
-cp ./lv_drivers/lv_drv_conf_template.h lv_drv_conf.h
+cp lvgl_src/lvgl/lv_conf_template.h lvgl_src/lv_conf.h
+cp lvgl_src/lv_drivers/lv_drv_conf_template.h lvgl_src/lv_drv_conf.h
 ```
 
 将lv_conf.h、lv_drv_conf.h的的 `#if 0` 改为 `#if 1`
