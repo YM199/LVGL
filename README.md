@@ -30,6 +30,12 @@ cp lvgl_src/lv_drivers/lv_drv_conf_template.h lvgl_src/lv_drv_conf.h
 
 ### lv_drv_conf.h
 
+添加宏定义：
+
+```C
+#define LV_LVGL_H_INCLUDE_SIMPLE 1
+```
+
 ```C
 #  define USE_FBDEV 1 /*改为1 使用framebuffer为/dev/fb0*/
 #  define USE_EVDEV 1 /*改为1 打开输入，使用/dev/input/event2*/
