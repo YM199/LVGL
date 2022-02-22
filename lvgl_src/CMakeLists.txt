@@ -1,29 +1,22 @@
-SET(CMAKE_BUILD_TYPE "Debug")
-SET(CMAKE_C_FLAGS_DEBUG "$ENV{CXXFLAGS} -O0 -Wall -g2 -ggdb -std=gnu11")
-SET(CMAKE_C_FLAGS_RELEASE "$ENV{CXXFLAGS} -O3 -Wall")
+SET(CMAKE_BUILD_TYPE "Debug") #当前是debug版本
+SET(CMAKE_C_FLAGS_DEBUG "$ENV{CXXFLAGS} -O0 -Wall -g2 -ggdb -std=gnu11") #debug版本的编译选项
+SET(CMAKE_C_FLAGS_RELEASE "$ENV{CXXFLAGS} -O3 -Wall -std=gnu11") #release版本的编译选项
 
-include_directories(/home/yangmou/Desktop/lv/src/lvgl)
+#设置头文件路劲
+include_directories(lvgl/)
+include_directories(lv_drivers/)
+include_directories(gui/)
 
-aux_source_directory(. DIR_SRCS) #将当前c文件名添加至DIR_SRC
+file(GLOB_RECURSE INCLUDES "./*.h" ) #获取lvg;_src目录下的全部的头文件
+
+aux_source_directory(. DIR_SRCS) #将当前目录的全部c文件添加至DIR_SRC
 message("DIR_SRC : ${DIR_SRCS}")
 
-add_subdirectory(gui)        #添加目录 lvgl
-add_subdirectory(lvgl)        #添加目录 lvgl
-#add_subdirectory(lv_demos) #添加目录 lv_examples
-add_subdirectory(lv_drivers)  #添加目录 lv_drivers
+#添加一个子目录并构建该子目录
+add_subdirectory(gui)
+add_subdirectory(lvgl)
+add_subdirectory(lv_drivers)
 
-INCLUDE_DIRECTORIES(${PROJECT_SOURCE_DIR})
-
-file(GLOB_RECURSE INCLUDES "./*.h" )
-
-include_directories(./lvgl)  #设置头文件路劲
-include_directories(./lv_drivers/)  #设置头文件路劲
-include_directories(./gui/) #设置头文件路劲
-
-get_property(dirs DIRECTORY ${CMAKE_SOURCE_DIR} PROPERTY INCLUDE_DIRECTORIES)
-message(">>> include_dirs=${dirs}") #打印一下目录情况
-#include_directories(./lv_demos/src/lv_demo_music/)  #设置头文件路劲
-#include_directories(./lv_demos/src/lv_demo_widgets/)  #设置头文件路劲
 add_executable(little_prj ${DIR_SRCS})  #链接生成文件little_prj 由DIR_SRC链接。
 find_package(Threads)
 
