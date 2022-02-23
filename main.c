@@ -5,10 +5,10 @@
 #include <unistd.h>
 #include <pthread.h>
 #include <assert.h>
-#include "lvgl/lvgl.h"
-#include "lv_drivers/display/fbdev.h"
-#include "lv_drivers/indev/evdev.h"
-#include "gui/gui.h"
+#include "lvgl.h"
+#include "fbdev.h"
+#include "evdev.h"
+#include "gui.h"
 
 #define DISP_HOR_RES 800
 #define DISP_VER_RES 480
@@ -72,7 +72,3 @@ int main(void)
     }
     return 0;
 }
-
-
-
-

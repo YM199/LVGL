@@ -1,1 +1,0 @@
-CSRCS += $(shell find -L gui -name "*.c")
