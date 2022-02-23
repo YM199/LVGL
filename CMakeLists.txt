@@ -20,10 +20,6 @@ include_directories(lvgl_src/lv_drivers/display/)
 include_directories(lvgl_src/lv_drivers/indev/)
 include_directories(lvgl_src/gui/)
 
-#设置LVGL_ROOT_DIR变量,在custom.cmake中用到
-set(LVGL_ROOT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/lvgl)
-#message("LVGL_ROOT_DIR : ${LVGL_ROOT_DIR}")
-
 #file(GLOB_RECURSE INCLUDES "./*.h" ) #获取lvg_src目录下的全部的头文件
 #message("INCLUDES : ${INCLUDES}")
 aux_source_directory(. DIR_SRCS) #将当前目录的全部源文件添加至DIR_SRC
@@ -46,5 +42,3 @@ message("CMAKE_THREAD_LIBS_INIT : ${CMAKE_THREAD_LIBS_INIT}")
 
 #添加lvgl_src目录
 add_subdirectory(lvgl_src)
-
-
