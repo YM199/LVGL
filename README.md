@@ -3,7 +3,7 @@
 ## 一、clone仓库
 
 ```shell
-git clone --recursive https://github.com/YM199/LVGL.git
+git clone --recursive git@github.com:YM199/lvgl.git
 ```
 
 ## 二、设置头文件
