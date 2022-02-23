@@ -3,9 +3,7 @@
 ## 一、clone仓库
 
 ```shell
-git clone https://github.com/YM199/LVGL.git
-cd lvgl/
-git submodule update --init --recursive
+git clone --recursive https://github.com/YM199/LVGL.git
 ```
 
 ## 二、设置头文件
