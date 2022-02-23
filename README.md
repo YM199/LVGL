@@ -4,7 +4,7 @@
 
 ```shell
 git clone https://github.com/YM199/LVGL.git
-cd LVGL/
+cd lvgl/
 git submodule update --init --recursive
 ```
 
